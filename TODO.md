@@ -47,3 +47,7 @@ curl "http://<server_address>/list"
 
 - [ ] List
 - [ ] Delete
+
+## Feature Ideas
+
+- [ ] Recent Uploads

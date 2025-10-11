@@ -22,8 +22,8 @@ export default defineConfig({
           if (!accept) {
             return req.url;
           }
-          console.log("[proxy] ", req.method, req.url);
-          return false;
+          console.log("[proxy]", req.method, req.url);
+          return undefined;
         },
       },
     },
