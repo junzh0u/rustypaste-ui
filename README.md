@@ -4,6 +4,13 @@ A (future) fully-functional UI for Rustypaste.
 
 ![Demo Video](./docs/demo.gif)
 
+**Current features:**
+
+- A single file with no external dependencies.
+- Responsive (desktop + mobile).
+- Authentication via tokens stored in local storage.
+- Drag and drop uploading of local files with progress (uses the default expiration of the server).
+
 ## Installation
 
 All dependencies are bundled into a single html file to be served directly by
