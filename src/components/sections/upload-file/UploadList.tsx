@@ -20,12 +20,11 @@ type UploadListProps = {
 export function UploadList({ files, removeFile }: UploadListProps) {
   const queued = files.filter(f => f.state === "queued" || f.state === "uploading");
   const completed = files.filter(f => f.state === "uploaded" || f.state === "errored" || f.state === "canceled");
-  const showHeaders = queued.length > 0 && completed.length > 0;
 
   return (
     <>
       <section>
-        {showHeaders && <h2 className="font-medium mb-1">Queue</h2>}
+        {queued.length > 0 && <h2 className="font-medium mb-1">Queue</h2>}
         <ol>
           {queued.map((file) => (
             <UploadedItem key={file.id} upload={file} removeFile={removeFile} />
@@ -33,7 +32,7 @@ export function UploadList({ files, removeFile }: UploadListProps) {
         </ol>
       </section>
       <section>
-        {showHeaders && <h2 className="font-medium mb-1">Completed</h2>}
+        {(queued.length > 0 && completed.length > 0) && <h2 className="font-medium mb-1">Completed</h2>}
         <ol>
           {completed.map((file) => (
             <UploadedItem key={file.id} upload={file} removeFile={removeFile} />
@@ -124,24 +123,26 @@ function UploadedItem({ upload, removeFile }: { upload: UploadState, removeFile:
                     Queued...
                   </div>
                   <div className="flex">
-                    {filesize(Math.round(upload.file.size))}
+                    {filesize(upload.file.size, { round: 1, pad: true })}
                   </div>
                 </div>
               )}
               {upload.state === "uploading" && (
                 <div className="text-xs flex flex-col">
                   <div>
-                    {upload.bytesPerSecond ? filesize(Math.round(upload.bytesPerSecond), { bits: true, standard: "jedec" }) + "/s" : "Starting..."}
+                    {upload.bytesPerSecond
+                     ? filesize(upload.bytesPerSecond, { bits: true, standard: "jedec", round: 1, pad: true }) + "/s"
+                     : "Starting..."}
                     {!!upload.estimatedSecondsRemaining && (
                       <>
-                        , {Math.round(upload.estimatedSecondsRemaining)}s remaining
+                        , {Math.round(upload.estimatedSecondsRemaining)} seconds remaining
                       </>
                     )}
                   </div>
                   <div className="flex">
-                    {filesize(Math.round(upload.progress * upload.file.size))}
+                    {filesize(upload.progress * upload.file.size, { round: 1, pad: true })}
                     <span className="mx-1">of</span>
-                    {filesize(upload.file.size)} uploaded
+                    {filesize(upload.file.size, { round: 1, pad: true })} uploaded
                   </div>
                 </div>
               )}
