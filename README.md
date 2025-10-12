@@ -1,2 +1,5 @@
 # rustypaste-ui
-A fully-functional UI for Rustypaste.
+
+A (future) fully-functional UI for Rustypaste.
+
+![Demo Video](./docs/demo.gif)
