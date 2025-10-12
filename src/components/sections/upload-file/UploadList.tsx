@@ -131,7 +131,7 @@ function UploadedItem({ upload, removeFile }: { upload: UploadState, removeFile:
               {upload.state === "uploading" && (
                 <div className="text-xs flex flex-col">
                   <div>
-                    {upload.bytesPerSecond ? filesize(Math.round(upload.bytesPerSecond)) + "/s" : "Starting..."}
+                    {upload.bytesPerSecond ? filesize(Math.round(upload.bytesPerSecond), { bits: true, standard: "jedec" }) + "/s" : "Starting..."}
                     {!!upload.estimatedSecondsRemaining && (
                       <>
                         , {Math.round(upload.estimatedSecondsRemaining)}s remaining
