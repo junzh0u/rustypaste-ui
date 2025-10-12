@@ -3,9 +3,12 @@ import { AuthGuard } from "@/components/AuthGuard.tsx";
 import { Sections } from "@/components/Sections.tsx";
 import { FaGithub } from "react-icons/fa";
 import { useVersions } from "@/components/useVersions.ts";
+import { useAuth } from "@/components/useAuth.ts";
+import { Button } from "@/components/ui/button.tsx";
 
 export function App() {
   const { appVersion, serverVersion } = useVersions();
+  const { clearAuth, isAuthenticated } = useAuth();
   return (
     <div className="container mx-auto w-full h-screen p-4 flex flex-col items-center gap-4">
       <section className="flex justify-center mt-8">
@@ -14,9 +17,16 @@ export function App() {
       <AuthGuard>
         <Sections />
       </AuthGuard>
-      <footer className="mt-auto max-w-sm w-full text-gray-500">
+      <footer className="mt-auto max-w-sm w-full text-gray-500 flex flex-col gap-2">
+        {isAuthenticated && (
+          <div className="flex justify-center">
+            <Button variant="link" onClick={clearAuth}>
+              Logout
+            </Button>
+          </div>
+        )}
         <div className="grid grid-cols-3 text-sm">
-          <div className="text-end">
+          <div className="text-end truncate overflow-hidden">
             UI: {appVersion}
           </div>
           <a href="https://github.com/Silvenga/rustypaste-ui"
@@ -26,7 +36,7 @@ export function App() {
              className="hover:text-gray-700 flex justify-center">
             <FaGithub className="size-5" />
           </a>
-          <div>
+          <div className="truncate overflow-hidden">
             Server: {serverVersion}
           </div>
         </div>

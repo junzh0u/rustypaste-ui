@@ -21,7 +21,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./
 
 const formSchema = z.object({
   authToken: z.string().min(1),
-  instanceUrl: z.httpUrl(),
+  instanceUrl: z.string().startsWith("http"),
 });
 
 export function AuthGuard({ children }: PropsWithChildren) {
@@ -40,6 +40,7 @@ function Login() {
       authToken: "",
       instanceUrl: window.location.origin,
     },
+    mode: "all",
   });
 
   const onSubmit = useCallback((values: z.infer<typeof formSchema>) => {
