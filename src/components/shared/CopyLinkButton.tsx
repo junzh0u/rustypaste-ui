@@ -1,9 +1,14 @@
 import { useCallback, useState } from "react";
-import { Button } from "@/components/ui/button.tsx";
+import { Button, type ButtonProps } from "@/components/ui/button.tsx";
 import { FaRegCopy } from "react-icons/fa";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip.tsx";
+import { twMerge } from "tailwind-merge";
 
-export function CopyButton({ text }: { text: string }) {
+type CopyLinkButtonProps = ButtonProps & {
+  text: string
+}
+
+export function CopyLinkButton({ text, className, ...props }: CopyLinkButtonProps) {
   const DEFAULT = "Copy";
   const COPIED = "Copied!";
   const [buttonText, setButtonText] = useState(DEFAULT);
@@ -20,8 +25,8 @@ export function CopyButton({ text }: { text: string }) {
   }, [text]);
   return (
     <Tooltip>
-      <TooltipTrigger>
-        <Button className="relative flex" onClick={run}>
+      <TooltipTrigger asChild>
+        <Button className={twMerge("relative flex", className)} onClick={run} {...props}>
           <div className="opacity-0 flex items-center justify-center gap-1" aria-hidden>
             <FaRegCopy />
             {COPIED}

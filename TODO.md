@@ -12,10 +12,10 @@ curl -F "file=@x.txt" "<server_address>"
 ```
 
 - [ ] Oneshot (Form Parameter, oneshot).
-- [ ] Submit
-- [ ] Progress
-- [ ] Streaming
-- [ ] Show Result
+- [X] Submit
+- [X] Progress
+- [X] Streaming
+- [X] Show Result
 
 ### URL Shortening
 
@@ -45,7 +45,7 @@ curl "http://<server_address>/list"
 [{"file_name":"accepted-cicada.txt","file_size":241,"expires_at_utc":null}]
 ```
 
-- [ ] List
+- [X] List
 - [ ] Delete
 
 ## Feature Ideas

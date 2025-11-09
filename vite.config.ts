@@ -19,6 +19,7 @@ export default defineConfig({
         changeOrigin: true,
         bypass: (req) => {
           const accept = req.method === "POST"
+                         || req.method === "DELETE"
                          || req.url === "/list"
                          || req.url === "/version";
           if (!accept) {

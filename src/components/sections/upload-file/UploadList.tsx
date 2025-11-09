@@ -9,7 +9,7 @@ import { MdOutlineErrorOutline } from "react-icons/md";
 import { Progress } from "@/components/ui/progress.tsx";
 import { twMerge } from "tailwind-merge";
 import { Input } from "@/components/ui/input.tsx";
-import { CopyButton } from "@/components/sections/upload-file/CopyButton.tsx";
+import { CopyLinkButton } from "@/components/shared/CopyLinkButton.tsx";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip.tsx";
 
 type UploadListProps = {
@@ -93,7 +93,7 @@ function UploadedItem({ upload, removeFile }: { upload: UploadState, removeFile:
           {upload.state == "uploaded" && (
             <div className="p-1 flex flex-col sm:flex-row gap-2 items-center">
               <Input type="text" value={upload.url} readOnly />
-              <CopyButton text={upload.url} />
+              <CopyLinkButton text={upload.url} />
             </div>
           )}
           {(upload.state == "uploading" || upload.state === "queued") && (

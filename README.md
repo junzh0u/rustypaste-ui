@@ -2,7 +2,7 @@
 
 A (future) fully-functional UI for Rustypaste.
 
-![Demo Video](./docs/demo.gif)
+
 
 **Current features:**
 
@@ -38,3 +38,9 @@ expose_list = true
 ```
 
 Right now, the UI assumes the same token can both upload and delete uploads.
+
+## Demos
+
+![Upload Demo](./docs/upload.gif)
+
+![History Demo](./docs/history.gif)
