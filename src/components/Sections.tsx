@@ -5,11 +5,11 @@ import { HistorySection } from "@/components/sections/history/HistorySection.tsx
 
 export function Sections() {
   return (
-    <Tabs defaultValue="files" className="flex flex-col items-center w-full mt-4">
+    <Tabs defaultValue="history" className="flex flex-col items-center w-full mt-4">
       <TabsList className="w-full max-w-md">
-        <TabsTrigger value="files">Files</TabsTrigger>
-        <TabsTrigger value="url" className="hidden">URL</TabsTrigger>
         <TabsTrigger value="history">History</TabsTrigger>
+        <TabsTrigger value="files">Upload</TabsTrigger>
+        <TabsTrigger value="url" className="hidden">URL</TabsTrigger>
       </TabsList>
       <TabsContent value="files"  className="w-full max-w-md">
         <UploadFileSection />

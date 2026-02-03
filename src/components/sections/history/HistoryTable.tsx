@@ -30,7 +30,7 @@ type HistoryTableProps = {
 }
 
 export function HistoryTable({ data, isLoading }: HistoryTableProps) {
-  const [sorting, setSorting] = useState<SortingState>([]);
+  const [sorting, setSorting] = useState<SortingState>([{ id: "createdAtUtc", desc: true }]);
   const [search, setSearch] = useState("");
 
   const filteredData = useMemo<ListItem[]>(() => {
@@ -52,8 +52,8 @@ export function HistoryTable({ data, isLoading }: HistoryTableProps) {
   });
 
   return (
-    <div className="flex flex-col gap-2">
-      <div className="flex gap-2">
+    <div className="flex flex-col gap-4">
+      <div className="flex gap-2 justify-center">
         <ButtonGroup>
           <Input
             placeholder="Search"
