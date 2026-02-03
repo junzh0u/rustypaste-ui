@@ -17,7 +17,7 @@ export function Sections() {
       <TabsContent value="url"  className="w-full max-w-md">
         <ShortenUrlSection />
       </TabsContent>
-      <TabsContent value="history" className="w-full max-w-4xl">
+      <TabsContent value="history" className="w-full max-w-5xl">
         <HistorySection />
       </TabsContent>
     </Tabs>

@@ -19,6 +19,7 @@ import { Input } from "@/components/ui/input.tsx";
 import { CgSearch } from "react-icons/cg";
 import { ButtonGroup } from "@/components/ui/button-group.tsx";
 import { ExpiresAtCell } from "@/components/sections/history/cells/ExpiresAtCell.tsx";
+import { CreatedAtCell } from "@/components/sections/history/cells/CreatedAtCell.tsx";
 import { ActionsCell } from "@/components/sections/history/cells/ActionsCell.tsx";
 import { FileSizeCell } from "@/components/sections/history/cells/FileSizeCell.tsx";
 import { FileNameCell } from "@/components/sections/history/cells/FileNameCell.tsx";
@@ -135,6 +136,21 @@ const columns: ColumnDef<ListItem>[] = [
     cell: (props: CellContext<ListItem, number | null>) => (
       <FileSizeCell {...props} />
     ),
+  },
+  {
+    accessorKey: "createdAtUtc",
+    enableSorting: true,
+    header: (props) => (
+      <SortableHeader {...props}>
+        Created At
+      </SortableHeader>
+    ),
+    cell: (props: CellContext<ListItem, Date | null>) => {
+      const value = props.getValue();
+      return (
+        <CreatedAtCell value={value} />
+      );
+    },
   },
   {
     accessorKey: "expiresAtUtc",
